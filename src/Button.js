@@ -43,8 +43,8 @@ const SIZES = {
 };
 
 const StyledButton = styled.button `
-  border: 10px solid red;
-  font-size: 20px;
+  border: 5px solid blue;
+  font-size: 16px;
   border-radius: 3em;
   cursor: pointer;
   display: inline-block;
@@ -348,69 +348,69 @@ export function Button({
     Text > {
       children
     } < /Text> {
-      isLoading && < Loading > {
-          loadingText || 'Loading...'
-        } < /Loading>} <
-        /Fragment>
-    );
+    isLoading && < Loading > {
+      loadingText || 'Loading...'
+    } < /Loading>} < /
+    Fragment >
+  );
 
-    const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
+  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
 
-    let SelectedButton = StyledButton;
-    if (ButtonWrapper) {
-      SelectedButton = StyledButtonWrapper;
-    } else if (isLink) {
-      SelectedButton = ButtonLink;
-    }
-
-    return ( <
-      SelectedButton isLoading = {
-        isLoading
-      }
-      disabled = {
-        isDisabled
-      } {
-        ...props
-      } > {
-        buttonInner
-      } <
-      /SelectedButton>
-    );
+  let SelectedButton = StyledButton;
+  if (ButtonWrapper) {
+    SelectedButton = StyledButtonWrapper;
+  } else if (isLink) {
+    SelectedButton = ButtonLink;
   }
 
-  Button.propTypes = {
-    isLoading: PropTypes.bool,
-    /**
-     When a button is in the loading state you can supply custom text
-    */
-    loadingText: PropTypes.node,
-    /**
-     Buttons that have hrefs should use <a> instead of <button>
-    */
-    isLink: PropTypes.bool,
-    children: PropTypes.node.isRequired,
-    appearance: PropTypes.oneOf(Object.values(APPEARANCES)),
-    isDisabled: PropTypes.bool,
-    /**
-     Prevents users from clicking on a button multiple times (for things like payment forms)
-    */
-    isUnclickable: PropTypes.bool,
-    /**
-     Buttons with icons by themselves have a circular shape
-    */
-    containsIcon: PropTypes.bool,
-    size: PropTypes.oneOf(Object.values(SIZES)),
-    ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-  };
+  return ( <
+    SelectedButton isLoading = {
+      isLoading
+    }
+    disabled = {
+      isDisabled
+    } {
+      ...props
+    } > {
+      buttonInner
+    } <
+    /SelectedButton>
+  );
+}
 
-  Button.defaultProps = {
-    isLoading: false,
-    loadingText: null,
-    isLink: false,
-    appearance: APPEARANCES.TERTIARY,
-    isDisabled: false,
-    isUnclickable: false,
-    containsIcon: false,
-    size: SIZES.MEDIUM,
-    ButtonWrapper: undefined,
-  };
+Button.propTypes = {
+  isLoading: PropTypes.bool,
+  /**
+   When a button is in the loading state you can supply custom text
+  */
+  loadingText: PropTypes.node,
+  /**
+   Buttons that have hrefs should use <a> instead of <button>
+  */
+  isLink: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  appearance: PropTypes.oneOf(Object.values(APPEARANCES)),
+  isDisabled: PropTypes.bool,
+  /**
+   Prevents users from clicking on a button multiple times (for things like payment forms)
+  */
+  isUnclickable: PropTypes.bool,
+  /**
+   Buttons with icons by themselves have a circular shape
+  */
+  containsIcon: PropTypes.bool,
+  size: PropTypes.oneOf(Object.values(SIZES)),
+  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+};
+
+Button.defaultProps = {
+  isLoading: false,
+  loadingText: null,
+  isLink: false,
+  appearance: APPEARANCES.TERTIARY,
+  isDisabled: false,
+  isUnclickable: false,
+  containsIcon: false,
+  size: SIZES.MEDIUM,
+  ButtonWrapper: undefined,
+};
