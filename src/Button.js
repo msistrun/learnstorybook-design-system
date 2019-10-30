@@ -43,7 +43,7 @@ const SIZES = {
 };
 
 const StyledButton = styled.button `
-  border: 5px solid blue;
+  border: 3px solid blue;
   font-size: 16px;
   border-radius: 3em;
   cursor: pointer;
